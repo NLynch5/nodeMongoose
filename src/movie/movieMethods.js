@@ -25,15 +25,13 @@ exports.listMovies = async () => {
 };
 
 // //CRUD _UPDATE
-exports.updateMovies = async (movieId, movieObj) => {
+exports.updateMovies = async (movieObj) => {
   try {
-    const movie = await Movie.findById;
-    console.log(await Movie.findByIdAndUpdate({ _id: movieId._id }, movieObj), {
-      upsert: true,
-      new: true,
-      runValidators: true,
-    });
-    console.log(`Updated ${movie.title}`);
+    const updateMovies = await Movie.updateOne(
+      { title: movieObj.filter },
+      { title: movieObj.update },
+      { new: true }
+    );
     mongoose.connection.close();
   } catch (error) {
     console.log(error);
